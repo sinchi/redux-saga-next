@@ -1,1 +1,4 @@
-export { testAction, TEST_ACTION } from "./testAction";
+export { 
+  getCurrentUserAction, GET_CURRENT_USER,
+  setCurrentUserAction, SET_CURRENT_USER
+ } from "./userActions";

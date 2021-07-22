@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 import { Provider } from 'react-redux'
 import { getStore } from '../redux-saga/getStore'
-import { testAction } from '../redux-saga/actions';
+import { getCurrentUserAction, setCurrentUserAction } from '../redux-saga/actions';
 
 const store = getStore();
 
@@ -12,7 +12,6 @@ function MyApp({ Component, pageProps }) {
     </Provider>
   )
 }
-
-store.dispatch(testAction("hello"))
+store.dispatch(getCurrentUserAction());
 
 export default MyApp

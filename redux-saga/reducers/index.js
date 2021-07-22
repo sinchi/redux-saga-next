@@ -1,1 +1,1 @@
-export { testReducer } from './testReducer'
+export { setCurrentUserReducer } from './userReducers'
