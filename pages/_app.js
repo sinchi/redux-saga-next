@@ -12,6 +12,6 @@ function MyApp({ Component, pageProps }) {
     </Provider>
   )
 }
-store.dispatch(getCurrentUserAction());
+store.dispatch(getCurrentUserAction('1234'));
 
 export default MyApp

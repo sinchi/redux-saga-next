@@ -11,8 +11,8 @@ import { Iterable } from 'immutable'
 // import { getQuery } from './utility'
 import { reducer } from './combineReducers';
 import { defaultState } from './defaultState'
-// import createSagaMiddleware from '@redux-saga/core';
-// import { initSagas } from './initSagas';
+ import createSagaMiddleware from '@redux-saga/core';
+ import { initSagas } from './initSagas';
 
 const stateTransformer = (state) => {
   if (Iterable.isIterable(state)) return state.toJS();
@@ -24,8 +24,8 @@ const logger = createLogger({
 });
 
 export const getStore = ()=>{
- // const sagaMiddleware = createSagaMiddleware();
-  const middleWares = [];
+  const sagaMiddleware = createSagaMiddleware();
+  const middleWares = [sagaMiddleware];
   //if (getQuery()['logger']) { middleWares.push(logger)}
   const composables = [applyMiddleware(...middleWares)]
   const enhancer = compose(
@@ -36,7 +36,7 @@ export const getStore = ()=>{
       defaultState,
       enhancer
   );
-  //console.info('Saga middleware implemented')
-  //initSagas(sagaMiddleware)
+  console.info('Saga middleware implemented')
+  initSagas(sagaMiddleware)
   return store;
 };
