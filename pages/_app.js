@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 import { Provider } from 'react-redux'
-import { getStore } from '../redux-saga/getStore'
-import { getCurrentUserAction, setCurrentUserAction } from '../redux-saga/actions';
+import { getStore } from '../src/getStore'
+import { getCurrentUserAction } from '../src/actions'
 
 const store = getStore();
 

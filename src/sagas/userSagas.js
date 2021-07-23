@@ -5,19 +5,17 @@ import axios from 'axios'
 const userInfo = new Promise((resolve, reject) => {
   let wait = setTimeout(() => {
     const data = {
-      name: 'belghar',
-      firstName: 'ayoub',
-      age: 32
+      'name': 'belghar',
+      'firstName': 'ayoub',
+      'age': '32'
     }
-    resolve({data})
+    resolve(data)
     clearTimeout(wait);
   }, 5000)
 })
-export const getCurrentUserSaga = function* () {
-  console.info('getuserinfo is fired please wait')
+export function* currentUserSaga() {
   const { id } = yield take(GET_CURRENT_USER);
-  const { data } = yield userInfo;
+  console.info('find user by id', id)
+  const data = yield userInfo;
   yield put(setCurrentUserAction(data))
-  console.info('getuserinfo is resolved thank you')
-  console.log('im the saga from user')
 }

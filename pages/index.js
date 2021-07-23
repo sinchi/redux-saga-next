@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import { connect } from 'react-redux'
+import { currentUserSelector } from '../src/selectors'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+const Home =  ({age, firstName, name}) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -13,10 +15,11 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome {name} {firstName} to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
         <p className={styles.description}>
+          you have {age} years old
           Get started by editing{' '}
           <code className={styles.code}>pages/index.js</code>
         </p>
@@ -67,3 +70,15 @@ export default function Home() {
     </div>
   )
 }
+
+const mapStateToProps = state => {
+  const user = currentUserSelector(state);
+  return user ? {
+    ...user.toJS(),
+    fetched: true
+  }: {
+    fetched: false
+  }
+}
+
+export default connect(mapStateToProps)(Home)

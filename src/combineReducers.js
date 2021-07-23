@@ -1,11 +1,8 @@
 import * as reducers from './reducers'
 import { fromJS } from 'immutable'
 
-const combineReducers = config => {
-  const defaultState = fromJS(Object.keys(config).reduce((a, key) => {
-    a[key] = config[key](undefined, [])
-    return a;
-  }, {}))
+export const combineReducers = config => {
+  const defaultState = fromJS(Object.keys(config).reduce((a,key)=>{a[key] = config[key](undefined,[]); return a},{}));
 
   return (state = defaultState, action) => {
     return Object.keys(config).reduce((state, key) => {
@@ -15,7 +12,7 @@ const combineReducers = config => {
       if(newValue === undefined) {
         throw new Error(`the reducer with key ${key} return undefined`)
       }
-      return state.set(key, state);
+      return state.set(key, newValue)
     }, state);
   }
    
