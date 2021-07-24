@@ -3,8 +3,7 @@ import { SET_CURRENT_USER } from "../actions";
 import { reducerCreator } from "../utility";
 
 export const currentUser = reducerCreator(null, {
-  [SET_CURRENT_USER](state, {user}) {
-    console.info({state})
+  [SET_CURRENT_USER](state, {user}) {    
     return fromJS(user)
   }
 })
