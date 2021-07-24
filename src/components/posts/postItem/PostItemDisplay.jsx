@@ -10,7 +10,8 @@ export const PostItemDisplay = ({title, body, id, fetched, isActive, onItemSelec
       content: body,
       delay: { "show": 500, "hide": 100 },
       animation: true,
-      customClass: 'primary'
+      customClass: 'primary',
+      placement: 'top'
     })
     isActive ? popover.show() : popover.hide()
     return () => {

@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { SpinnerDisplay } from '../spinner';
 
 export const ListDisplay = ({dataList, fetched, ComponentItemContainer, listTitle, itemByPage}) => {
   const ITEM_BY_PAGE = itemByPage;
@@ -67,11 +68,7 @@ export const ListDisplay = ({dataList, fetched, ComponentItemContainer, listTitl
           
           </div>
         ) : (
-            <div className="d-flex justify-content-center mb-5">
-                  <div className="spinner-border" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                  </div>
-            </div>
+            <SpinnerDisplay />
           )
       }
       
