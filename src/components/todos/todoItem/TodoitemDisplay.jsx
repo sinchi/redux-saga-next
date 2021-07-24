@@ -9,7 +9,8 @@ export const TodoItemDisplay = ({title, completed, id, fetched, isActive, onItem
       content: `status: ${completed ? 'completed' : 'todo'}`,
       delay: { "show": 500, "hide": 100 },
       animation: true,
-      customClass: 'primary'
+      customClass: 'primary',
+      placement: 'top'
     })
     isActive ? popover.show() : popover.hide()
     return () => {
