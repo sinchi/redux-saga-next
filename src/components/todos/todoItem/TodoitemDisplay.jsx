@@ -1,4 +1,5 @@
 import React, {useRef, useEffect, useState} from 'react'
+import { SpinnerDisplay } from '../../common';
 
 export const TodoItemDisplay = ({title, completed, id, fetched, isActive, onItemSelected}) => {
   const ref = useRef();
@@ -43,5 +44,5 @@ export const TodoItemDisplay = ({title, completed, id, fetched, isActive, onItem
         </div>
       </div>
     </li>
-  ) : <div className="spinner-grow text-muted"></div>
+  ) : <SpinnerDisplay />
 }

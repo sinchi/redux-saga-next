@@ -1,4 +1,5 @@
 import React, {useRef, useEffect} from 'react'
+import { SpinnerDisplay } from '../../common';
 
 
 export const PostItemDisplay = ({title, body, id, fetched, isActive, onItemSelected}) => {
@@ -42,5 +43,5 @@ export const PostItemDisplay = ({title, body, id, fetched, isActive, onItemSelec
       </div>
       
     </li>
-  ) : <div className="spinner-grow text-muted"></div>
+  ) : <SpinnerDisplay />
 }
