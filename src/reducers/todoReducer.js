@@ -1,5 +1,5 @@
 import { fromJS } from "immutable";
-import { SET_TODOS } from "../actions/todoActions";
+import { SET_TODOS } from "../actions";
 import { reducerCreator } from "../utility";
 
 export const todos = reducerCreator(null, {

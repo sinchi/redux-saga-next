@@ -1,6 +1,6 @@
 import axios from "axios";
 import { put, take } from "redux-saga/effects";
-import { FETCH_TODOS, setTodosAction } from "../actions/todoActions";
+import { FETCH_TODOS, setTodosAction } from "../actions";
 
 export function* fetchTodosSaga() {
   yield take(FETCH_TODOS);

@@ -1,11 +1,12 @@
-import React, {useRef, useEffect, useState} from 'react'
+import React, {useRef, useEffect} from 'react'
 
-export const TodoItemDisplay = ({title, completed, id, fetched, isActive, onItemSelected}) => {
+
+export const PostItemDisplay = ({title, body, id, fetched, isActive, onItemSelected}) => {
   const ref = useRef();
   useEffect(() => {
     let popover= new bootstrap.Popover(ref.current, {
       title,
-      content: `status: ${completed ? 'completed' : 'todo'}`,
+      content: body,
       delay: { "show": 500, "hide": 100 },
       animation: true,
       customClass: 'primary'
@@ -14,7 +15,7 @@ export const TodoItemDisplay = ({title, completed, id, fetched, isActive, onItem
     return () => {
       popover.dispose();
     }
-  }, [isActive, title, completed])
+  }, [isActive, title, body])
 
   return fetched ? (
     <li 
@@ -22,7 +23,6 @@ export const TodoItemDisplay = ({title, completed, id, fetched, isActive, onItem
       onMouseOver={() => onItemSelected(id)}
       onMouseLeave={() => onItemSelected(null)}
       key={id} 
-      aria-disabled={completed} 
       aria-current={isActive}
       className={
       `
@@ -30,18 +30,17 @@ export const TodoItemDisplay = ({title, completed, id, fetched, isActive, onItem
         d-flex 
         justify-content-between
         align-items-start 
-        ${completed ? 'disabled ' : ''}
         ${isActive ? 'active' : ''}
         
       `
       }>
       <div className="ms-2 me-auto">
         <div className="fw-bold">
-          <p>
-            { completed ? <del>{`${id}.${title}`}</del> : `${id}.${title}` }
-          </p>
+          <p>{`${id}.${title}`}</p>
         </div>
+        
       </div>
+      
     </li>
   ) : <div className="spinner-grow text-muted"></div>
 }

@@ -1,6 +1,6 @@
+import axios from 'axios'
 import { put, take } from 'redux-saga/effects'
-import { GET_CURRENT_USER, setCurrentUserAction } from '../actions'
-import { fetchTodosAction } from '../actions/todoActions'
+import { fetchTodosAction, fetchPostsAction, GET_CURRENT_USER, setCurrentUserAction } from '../actions'
 
 const userInfo = new Promise((resolve, reject) => {
   let wait = setTimeout(() => {
@@ -16,7 +16,8 @@ const userInfo = new Promise((resolve, reject) => {
 export function* currentUserSaga() {
   const { id } = yield take(GET_CURRENT_USER);
   console.info('find user by id', id)
-  const data = yield userInfo;
+  const {data} = yield axios.get('https://jsonplaceholder.typicode.com/users/'+id);
   yield put(setCurrentUserAction(data))
   yield put(fetchTodosAction())
+  yield put(fetchPostsAction())
 }
