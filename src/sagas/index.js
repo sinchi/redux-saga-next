@@ -1,3 +1,4 @@
-export { currentUserSaga } from './userSagas'
-export { fetchTodosSaga } from './todoSaga'
-export { fetchPostsSaga } from './postsSaga'
+export * from './userSagas'
+export * from './todoSaga'
+export * from './postsSaga'
+export * from './commentSaga'

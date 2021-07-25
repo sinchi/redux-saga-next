@@ -16,6 +16,5 @@ function MyApp({ Component, pageProps }) {
 }
 store.dispatch(getCurrentUserAction('1'));
 store.dispatch(fetchTodosAction());
-store.dispatch(fetchPostsAction());
 
 export default MyApp
