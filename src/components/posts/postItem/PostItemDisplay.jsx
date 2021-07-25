@@ -1,6 +1,5 @@
 import React from 'react'
-import { SpinnerDisplay } from '../../common';
-import { OverlayTrigger, Popover, ListGroup } from 'react-bootstrap'
+import { OverlayTrigger, Popover, ListGroup, Spinner } from 'react-bootstrap'
 
 export const PostItemDisplay = ({title, body, id, fetched, isActive, onItemSelected}) => {
 
@@ -13,7 +12,7 @@ export const PostItemDisplay = ({title, body, id, fetched, isActive, onItemSelec
     </Popover>
   );
 
-  return fetched ? (
+  return  (
     <ListGroup.Item
         onMouseOver={() => onItemSelected(id)}
         onMouseLeave={() => onItemSelected()}
@@ -21,7 +20,7 @@ export const PostItemDisplay = ({title, body, id, fetched, isActive, onItemSelec
         active={isActive}>
       <OverlayTrigger 
         trigger={['hover', 'focus', 'touch']} 
-        placement="bottom"
+        placement="right"
         overlay={popover}>
           <div className="ms-2 me-auto">
             <div className="fw-bold">
@@ -30,8 +29,7 @@ export const PostItemDisplay = ({title, body, id, fetched, isActive, onItemSelec
           </div>
       </OverlayTrigger>   
     </ListGroup.Item>
-    
-  ) : <SpinnerDisplay />
+  )
 }
 
 

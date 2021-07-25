@@ -16,10 +16,10 @@ const Home =  ({age, firstName, name}) => {
       </Head>
       <main>
         <div className="row">
-          <div className="col-6">
+          <div className="col-4">
             <TodoListContainer />
           </div>
-          <div className="col-6">
+          <div className="col-4">
             <PostListContainer />
           </div>
         </div>

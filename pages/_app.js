@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import '../styles/globals.css'
 import { Provider } from 'react-redux'
 import { getStore } from '../src/getStore'
-import { getCurrentUserAction } from '../src/actions'
+import { fetchPostsAction, fetchTodosAction, getCurrentUserAction } from '../src/actions'
 
 const store = getStore();
 
@@ -15,5 +15,7 @@ function MyApp({ Component, pageProps }) {
   )
 }
 store.dispatch(getCurrentUserAction('1'));
+store.dispatch(fetchTodosAction());
+store.dispatch(fetchPostsAction());
 
 export default MyApp
