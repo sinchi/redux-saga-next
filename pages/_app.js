@@ -1,3 +1,5 @@
+import 'bootstrap/dist/css/bootstrap.css'
+//import 'bootstrap/js/dist/popover.js'
 import '../styles/globals.css'
 import { Provider } from 'react-redux'
 import { getStore } from '../src/getStore'
