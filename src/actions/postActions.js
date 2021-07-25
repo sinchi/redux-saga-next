@@ -1,5 +1,4 @@
 import { actionCreator } from "../utility"
-import { SET_TODOS } from "./todoActions"
 
 export const FETCH_POSTS = 'FETCH_POSTS'
 export const fetchPostsAction = actionCreator(FETCH_POSTS)

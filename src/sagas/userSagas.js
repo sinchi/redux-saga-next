@@ -18,6 +18,4 @@ export function* currentUserSaga() {
   console.info('find user by id', id)
   const {data} = yield axios.get('https://jsonplaceholder.typicode.com/users/'+id);
   yield put(setCurrentUserAction(data))
-  yield put(fetchTodosAction())
-  yield put(fetchPostsAction())
 }
