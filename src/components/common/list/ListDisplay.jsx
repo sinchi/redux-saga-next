@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { SpinnerDisplay } from '../spinner';
+import {  FaRegHandPointRight, FaRegHandPointLeft } from "react-icons/fa";
 
 export const ListDisplay = ({dataList, fetched, ComponentItemContainer, listTitle, itemByPage}) => {
   const ITEM_BY_PAGE = itemByPage;
@@ -54,14 +55,15 @@ export const ListDisplay = ({dataList, fetched, ComponentItemContainer, listTitl
             }
           </ul>
             
-          <div className="col-3 mb-3">
+          <div className="col-4 mb-3">
           {
-              !fisrtPage && <button className="btn btn-primary me-3" onClick={handleBack} style={{marginRight: '5px', cursor: 'pointer'}}>Back</button>
+              !fisrtPage && <button className="btn btn-primary me-3" onClick={handleBack} style={{marginRight: '5px', cursor: 'pointer'}}>
+               <FaRegHandPointLeft /></button>
             }
             {
               !lastPage && 
               <button className="btn btn-primary" onClick={handleNext} style={{cursor: 'pointer'}}>
-                Next <i className="fas fa-arrow-right"></i>
+                 <FaRegHandPointRight />
               </button>
             }
           </div>
