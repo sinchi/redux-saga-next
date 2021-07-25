@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { SpinnerDisplay } from '../spinner';
 import {  FaRegHandPointRight, FaRegHandPointLeft } from "react-icons/fa";
+import { ListGroup, Row, Col, Button } from 'react-bootstrap'
 
 export const ListDisplay = ({dataList, fetched, ComponentItemContainer, listTitle, itemByPage}) => {
   const ITEM_BY_PAGE = itemByPage;
@@ -41,8 +42,8 @@ export const ListDisplay = ({dataList, fetched, ComponentItemContainer, listTitl
       <h1>{ listTitle }</h1>
       {
         fetched ? (
-          <div className="row">
-            <ul className="list-group mb-3" style={{cursor: 'pointer'}}>
+          <Row>
+            <ListGroup className="mb-3" style={{cursor: 'pointer'}}>
             {
               dataList.slice(from, to).map(dataItem => (
                 <ComponentItemContainer 
@@ -53,22 +54,24 @@ export const ListDisplay = ({dataList, fetched, ComponentItemContainer, listTitl
                  />
               ))
             }
-          </ul>
+          </ListGroup>
             
-          <div className="col-4 mb-3">
+          <Col xs={4} className="mb-3">
           {
-              !fisrtPage && <button className="btn btn-primary me-3" onClick={handleBack} style={{marginRight: '5px', cursor: 'pointer'}}>
-               <FaRegHandPointLeft /></button>
+              !fisrtPage && 
+              <Button className="btn btn-primary me-3" onClick={handleBack} style={{marginRight: '5px', cursor: 'pointer'}}>
+                <FaRegHandPointLeft />
+               </Button>
             }
             {
               !lastPage && 
-              <button className="btn btn-primary" onClick={handleNext} style={{cursor: 'pointer'}}>
+              <Button className="btn btn-primary" onClick={handleNext} style={{cursor: 'pointer'}}>
                  <FaRegHandPointRight />
-              </button>
+              </Button>
             }
-          </div>
+          </Col>
           
-          </div>
+          </Row>
         ) : (
             <SpinnerDisplay />
           )

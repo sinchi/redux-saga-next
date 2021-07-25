@@ -1,48 +1,39 @@
-import React, {useRef, useEffect} from 'react'
+import React from 'react'
 import { SpinnerDisplay } from '../../common';
-
+import { OverlayTrigger, Popover, ListGroup } from 'react-bootstrap'
 
 export const PostItemDisplay = ({title, body, id, fetched, isActive, onItemSelected}) => {
-  const ref = useRef();
-  useEffect(() => {
-    let popover= new bootstrap.Popover(ref.current, {
-      title,
-      content: body,
-      delay: { "show": 500, "hide": 100 },
-      animation: true,
-      customClass: 'primary',
-      placement: 'top'
-    })
-    isActive ? popover.show() : popover.hide()
-    return () => {
-      popover.dispose();
-    }
-  }, [isActive, title, body])
+
+  const popover = (
+    <Popover id="popover-basic">
+      <Popover.Header as="h3">{title}</Popover.Header>
+      <Popover.Body>
+        {body}
+      </Popover.Body>
+    </Popover>
+  );
 
   return fetched ? (
-    <li 
-      ref={ref}
-      onMouseOver={() => onItemSelected(id)}
-      onMouseLeave={() => onItemSelected(null)}
-      key={id} 
-      aria-current={isActive}
-      className={
-      `
-        list-group-item 
-        d-flex 
-        justify-content-between
-        align-items-start 
-        ${isActive ? 'active' : ''}
-        
-      `
-      }>
-      <div className="ms-2 me-auto">
-        <div className="fw-bold">
-          <p>{`${id}.${title}`}</p>
-        </div>
-        
-      </div>
-      
-    </li>
+    <ListGroup.Item
+        onMouseOver={() => onItemSelected(id)}
+        onMouseLeave={() => onItemSelected()}
+        key={id} 
+        active={isActive}>
+      <OverlayTrigger 
+        trigger={['hover', 'focus', 'touch']} 
+        placement="bottom"
+        overlay={popover}>
+          <div className="ms-2 me-auto">
+            <div className="fw-bold">
+              <p>{`${id}.${title}`}</p>
+            </div>
+          </div>
+      </OverlayTrigger>   
+    </ListGroup.Item>
+    
   ) : <SpinnerDisplay />
 }
+
+
+
+
