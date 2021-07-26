@@ -7,7 +7,7 @@ export const comments = reducerCreator([], {
     if(state.find(detail => detail.postId === postId)){
       return state.update(detail => detail.postId === postId, comments)
     } else {
-      return postId ? state.push({[postId]: comments}) : state;
+      return state.push({[postId]: comments})
     }
   }
 })

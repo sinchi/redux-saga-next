@@ -1,14 +1,15 @@
 import React from 'react'
 import { OverlayTrigger, Popover, ListGroup, Spinner } from 'react-bootstrap'
 
-export const PostItemDisplay = ({title, body, id, fetched, isActive, onItemSelected, comments, postId}) => {
+export const PostItemDisplay = ({title, body, id, fetched, isActive, onItemSelected, postComments, postId, postCommentsFetched}) => {
+
   const popover = (
     <Popover id="popover-basic">
       <Popover.Header as="h3"><strong>Post title: </strong> {title}</Popover.Header>
       <Popover.Body>
         <h6>Comments: </h6>
         <div>
-          { comments && Object.values(comments)[0].map(({id, name, email}) => <p key={id}><strong>{email}: </strong> {name}</p>) }
+          { postCommentsFetched && postComments.map(({id, name, email}) => <p key={id}><strong>{email}: </strong> {name}</p>) }
         </div>
       </Popover.Body>
     </Popover>
